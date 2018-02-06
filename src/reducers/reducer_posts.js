@@ -1,8 +1,17 @@
 import _ from 'lodash';
-import { FETCH_POSTS, FETCH_POST } from '../actions';
+import { FETCH_POSTS, FETCH_POST, DELETE_POST } from '../actions';
 
 export default function(state = {}, action) {
     switch (action.type) {
+        case DELETE_POST:
+            //we manage the local storage
+            //we delete the the post from state because slow internet connection or
+            //any other issues are possible
+            //So after deletion of post, we immediately delete it from the state
+            return _.omit(state, action.payload);
+            //action.payload keeps the "id" of deleted post
+            //_.omit() lodash function delete the key-value pair from state if action.payload key is exist in state
+
         case FETCH_POST:
             //const post = action.payload.data;
             //const newState = { ...state };
