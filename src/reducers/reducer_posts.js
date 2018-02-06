@@ -9,6 +9,7 @@ export default function(state = {}, action) {
             //newState[post.id] = post;
             //return newState;
             return { ...state, [action.payload.data.id]: action.payload.data };   //identical to that four lines of code
+            //If newly fetched post is exist in state update it, otherwise add it to state.
 
         case FETCH_POSTS:
             //console.log(action.payload.data); //expect [post1, post2 ]
